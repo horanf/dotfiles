@@ -25,7 +25,7 @@
     "disable-scroll": false,
     "all-outputs": true,
     "format": "{icon}",
-    "on-click": "~/.config/waybar/workspace-click.sh {id}",
+    "on-click": "$HOME/.config/waybar/workspace-click.sh {id}",
     "persistent-workspaces": {
     "*": [1,2,3,4,5]
     },
