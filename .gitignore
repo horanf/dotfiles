@@ -1,1 +1,2 @@
-# nvim lazy.nvim plugin cache - not tracked
+# nvim lazy.nvim internal git state - not tracked
+nvim/.git/
