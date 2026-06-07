@@ -45,6 +45,42 @@ done
 
 echo
 
+# ── Dependencies ───────────────────────────────────────────────
+declare -a DEPS=(
+    atuin
+    fish
+    ghostty
+    neovim
+    ripgrep
+    fd
+    tmux
+    waybar
+)
+
+# pick AUR helper if available
+if command -v yay &>/dev/null; then
+    PKGMGR=(yay -S --needed --noconfirm)
+elif command -v paru &>/dev/null; then
+    PKGMGR=(paru -S --needed --noconfirm)
+else
+    PKGMGR=(sudo pacman -S --needed --noconfirm)
+fi
+
+declare -a MISSING=()
+for pkg in "${DEPS[@]}"; do
+    pacman -Q "$pkg" &>/dev/null || MISSING+=("$pkg")
+done
+
+if [ ${#MISSING[@]} -gt 0 ]; then
+    info "安装 ${#MISSING[@]} 个缺失依赖: ${MISSING[*]}"
+    "${PKGMGR[@]}" "${MISSING[@]}"
+    ok "依赖安装完成"
+else
+    ok "所有依赖已就绪"
+fi
+
+echo
+
 # ── tmux: install TPM ─────────────────────────────────────────
 info "检查 tmux 插件管理器 (TPM) …"
 if [ -d "$HOME/.tmux/plugins/tpm" ]; then
