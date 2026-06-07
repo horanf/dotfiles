@@ -1,2 +1,5 @@
 # nvim lazy.nvim internal git state - not tracked
 nvim/.git/
+
+# tmux plugins managed by TPM
+tmux/plugins/
