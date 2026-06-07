@@ -1,7 +1,7 @@
 return {
   {
     "nvim-java/nvim-java",
-    ft = { "java", "yaml", "jproperties" },
+    ft = { "java", "jproperties" },
     config = function()
       require("java").setup({
         spring_boot_tools = { enable = true },
