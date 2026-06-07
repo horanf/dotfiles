@@ -6,37 +6,15 @@ Arch Linux + Hyprland 配置文件。
 
 每个目录对应 ~/.config 下的一个应用，通过 symlink 连接：
 
-| ~/.config/ | -> | ~/dotfiles/ |
-|---|---|---|
-| atuin | -> | atuin |
-| fish | -> | fish |
-| nvim | -> | nvim |
-| gh...hty | -> | gh...hty |
-| hypr | -> | hypr |
-| waybar | -> | waybar |
-
-```
-~/.config/
-  atuin    -> ~/dotfiles/atuin/
-  fish     -> ~/dotfiles/fish/
-  nvim     -> ~/dotfiles/nvim/
-  gh...hty  -> ~/dotfiles/ghostty/
-  hypr     -> ~/dotfiles/hypr/
-  waybar   -> ~/dotfiles/waybar/
-```
+| atuin | fish | gh...hty | hypr | nvim | tmux | waybar |
 
 ## 新机器安装
 
 ```bash
-git clone https://github.com/horanf/dotfiles.git ~/dotfiles
-
-# 创建 symlink (先备份已有配置)
-mkdir -p ~/.config
-for pkg in atuin fish nvim gh...hty hypr waybar; do
-  [ -e ~/.config/$pkg ] && mv ~/.config/$pkg ~/.config/$pkg.bak
-  ln -s ~/dotfiles/$pkg ~/.config/$pkg
-done
+git clone https://github.com/horanf/dotfiles.git ~/dotfiles && ~/dotfiles/install.sh
 ```
+
+> 已有配置文件会自动备份为 `<name>.bak.时间戳`，不会丢失。
 
 ## 日常使用
 
