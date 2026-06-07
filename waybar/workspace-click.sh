@@ -7,15 +7,15 @@ APP_CLASS[1]="com.mitchellh.ghostty"   APP_CMD[1]="ghostty"
 APP_CLASS[2]="google-chrome"           APP_CMD[2]="google-chrome-stable"
 APP_CLASS[3]="obsidian"                APP_CMD[3]="obsidian"
 APP_CLASS[4]="zed"                     APP_CMD[4]="zed"
-APP_CLASS[5]="spotify"                 APP_CMD[5]="spotify"
+APP_CLASS[5]="spotify"                 APP_CMD[5]="spotify-launcher"
 
 CLASS="${APP_CLASS[$WS]}"
 CMD="${APP_CMD[$WS]}"
 [ -z "$CLASS" ] && exit 0
 
-if hyprctl clients -j 2>/dev/null | grep -qF "$CLASS"; then
+if hyprctl clients -j 2>/dev/null | grep -qiF "$CLASS"; then
     hyprctl dispatch workspace "$WS"
 else
-    hyprctl dispatch exec "$CMD"
     hyprctl dispatch workspace "$WS"
+    hyprctl dispatch exec "$CMD"
 fi
